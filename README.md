@@ -71,7 +71,7 @@ $ composer run-app
 You can run tests with bash command ``` composer test ```
 
 The unit tests interact with a test database : app_test.db.
-All your API requests will interact with dev database : app.db 
+All your API requests will interact with dev database : app_dev.db 
 
 ###Troubleshooting
 
