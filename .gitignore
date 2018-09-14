@@ -1,16 +1,18 @@
 ###> symfony/framework-bundle ###
 ##/.env
 /public/bundles/
-/var/
+
 !/var/data
-/var/*
+/var/
 !/var/cache
 /var/cache/*
 !/var/log
 /var/log/*
+
 /vendor/
 /.idea
 /.vagrant
 .phpunit
 /phpunit.xml.dist
 
+!/var/data/

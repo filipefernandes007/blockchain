@@ -23,7 +23,7 @@ $ git clone https://github.com/filipefernandes007/blockchain
 $ cd blockchain
 $ composer self-update
 $ composer install
-$ composer app-run
+$ composer run-app
 ```
 
 #Bonus
