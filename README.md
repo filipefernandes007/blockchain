@@ -81,4 +81,21 @@ Apply ``` php bin/console cache:clear ``` if you get this message after ``` comp
    1x: The "Sensio\Bundle\FrameworkExtraBundle\Configuration\Route" annotation is deprecated since version 5.2. Use "Symfony\Component\Routing\Annotation\Route" instead._
 "
 
+#API
+
+In order to test blockchain and besides Unit Tests, there are routes to address blockchain and his blocks:
+
+ ------------------------------- -------- -------- ------ ------------------------------- 
+  Name                            Method   Scheme   Host   Path                           
+ ------------------------------- -------- -------- ------ ------------------------------- 
+  block_api_get                   GET      ANY      ANY    /api/block/{id}                
+  block_api_all                   GET      ANY      ANY    /api/block/all/{blockchainId}  
+  blockchain_api_add              POST     ANY      ANY    /api/blockchain                
+  blockchain_api_get              GET      ANY      ANY    /api/blockchain/{id}           
+  blockchain_api_all              GET      ANY      ANY    /api/blockchain                
+  blockchain_api_all_pagination   GET      ANY      ANY    /api/blockchain/page/{page}    
+  blockchain_api_add_block        POST     ANY      ANY    /api/blockchain/block          
+  blockchain_api_blocks           GET      ANY      ANY    /api/blockchain/{id}/blocks    
+ ------------------------------- -------- -------- ------ ------------------------------- 
+
 Enjoy!

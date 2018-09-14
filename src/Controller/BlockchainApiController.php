@@ -66,7 +66,7 @@ class BlockchainApiController extends AbstractController
 
     /**
      * @Route("", methods={"GET"}, name="blockchain_api_all")
-     * @Route("/page/{page}", methods={"GET"}, name="blockchain_api_all_pagination")
+     * @Route("/page/{page}", requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="blockchain_api_all_pagination")
      * @param int $page
      * @return JsonResponse
      */
@@ -136,7 +136,7 @@ class BlockchainApiController extends AbstractController
     /**
      * The blocks belonging to the blockchain
      *
-     * @Route("/blocks/{id}", methods={"GET"}, name="blockchain_api_blocks")
+     * @Route("/{id}/blocks", requirements={"id": "[1-9]\d*"}, methods={"GET"}, name="blockchain_api_blocks")
      * @param int $id
      * @return JsonResponse
      */
