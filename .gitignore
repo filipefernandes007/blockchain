@@ -11,5 +11,3 @@
 /.vagrant
 .phpunit
 /phpunit.xml.dist
-
-!/var/data/
