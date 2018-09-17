@@ -12,6 +12,7 @@
     use App\Entity\Blockchain;
     use App\Utils\BlockchainTestEntity;
     use App\Utils\BlockDataGenesis;
+    use App\Utils\Vote;
     use Doctrine\Common\Persistence\ObjectManager;
     use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
     use App\Kernel;
@@ -117,6 +118,17 @@
 
             parent::assertEquals(BlockDataGenesis::GENESIS_BLOCK_NAME, $blocks[0]->getData());
             parent::assertCount(6, $blocks);
+        }
+
+        public function testBlocksInBlockchainDataIsVoteInstance() : void {
+            $blockchain = $this->getLastBlockchain();
+
+            /** @var Vote $vote */
+            $vote = unserialize($blockchain->lastBlock()->getData());
+
+            parent::assertInstanceOf(Vote::class, $vote);
+            parent::assertGreaterThan(0, $vote->getVoterId());
+            parent::assertEquals(Vote::NO, $vote->getYesNo());
         }
 
         /**
