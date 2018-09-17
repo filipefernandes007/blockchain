@@ -120,6 +120,9 @@
             parent::assertCount(6, $blocks);
         }
 
+        /**
+         * @throws \Doctrine\ORM\NonUniqueResultException
+         */
         public function testBlocksInBlockchainDataIsVoteInstance() : void {
             $blockchain = $this->getLastBlockchain();
 
