@@ -73,6 +73,9 @@ You can run tests with bash command ``` composer test ```
 The unit tests interact with a test database : app_test.db.
 All your API requests will interact with dev database : app_dev.db 
 
+` composer test ` also launches _doctrine fixtures_ and purges `app_test.db` 
+for your convenience.  
+
 ###Troubleshooting
 
 Apply ``` php bin/console cache:clear ``` if you get this message after ``` composer test ``` : 
