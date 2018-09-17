@@ -9,6 +9,7 @@
     namespace App\Tests\AppBundle\Utils;
 
     use App\Utils\ProofOfWork;
+    use App\Utils\Voter;
     use PHPUnit\Framework\TestCase;
 
     class UnitTest extends TestCase
@@ -21,6 +22,17 @@
             $this->assertTrue($pow->validateHash($hash));
             $this->assertTrue($pow->isNonceValid());
             $this->assertEquals(63954, $pow->getNonce());
+        }
+
+        public function testBlockData() : void {
+            $voter = new Voter();
+            $voter->voterId = hexdec(\uniqid('__voter', false));
+            $voter->yesNo   = Voter::YES;
+
+            $this->assertInstanceOf(Voter::class, unserialize($voter->getData()));
+            $this->assertTrue($voter->isValid());
+
+            var_dump($voter->getData());
         }
 
     }

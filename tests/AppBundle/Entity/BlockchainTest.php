@@ -97,8 +97,4 @@
             parent::assertEquals('Genesis Test', $blocks[0]->getData());
             parent::assertCount(3, $blocks);
         }
-
-
-
-
     }

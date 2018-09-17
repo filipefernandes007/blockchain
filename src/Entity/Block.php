@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Utils\BlockDataInterface;
 use App\Utils\ProofOfWork;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
@@ -71,13 +72,13 @@ class Block
 
     /**
      * Block constructor.
-     * @param string $data
-     * @param Block  $previousBlock
+     * @param BlockDataInterface $data
+     * @param Block              $previousBlock
      */
-    public function __construct(string $data, Block $previousBlock = null)
+    public function __construct(BlockDataInterface $data, Block $previousBlock = null)
     {
         $this->createdAt = new \DateTime();
-        $this->data      = $data;
+        $this->data      = $data->getData();
 
         if ($previousBlock !== null) {
             $this->idx               = $previousBlock->getIdx() + 1;

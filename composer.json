@@ -31,6 +31,7 @@
         "symfony/dotenv": "*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "liip/functional-test-bundle": "~2.0@alpha",
         "phpunit/phpunit": "^7",
         "symfony/maker-bundle": "^1.7",
