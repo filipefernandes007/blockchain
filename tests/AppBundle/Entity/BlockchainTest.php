@@ -10,6 +10,7 @@
 
     use App\DataFixtures\BlockchainDataFixtures;
     use App\Entity\Blockchain;
+    use App\Utils\BlockchainTestEntity;
     use App\Utils\BlockDataGenesis;
     use Doctrine\Common\Persistence\ObjectManager;
     use Symfony\Bundle\FrameworkBundle\Tests\TestCase;

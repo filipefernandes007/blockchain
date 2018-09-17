@@ -6,7 +6,7 @@
      * Time: 02:05
      */
 
-    namespace App\Tests\AppBundle\Entity;
+    namespace App\Utils;
 
     use App\Entity\Blockchain;
 

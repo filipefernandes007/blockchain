@@ -164,12 +164,12 @@ class Block
         return $this;
     }
 
-    public function getPreviousBlock(): ?self
+    public function getPreviousBlock() : ?self
     {
         return $this->previousBlock;
     }
 
-    public function setPreviousBlock(?self $previousBlock): self
+    public function setPreviousBlock(?self $previousBlock) : self
     {
         $this->previousBlock = $previousBlock;
 
