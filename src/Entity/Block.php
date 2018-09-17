@@ -72,13 +72,13 @@ class Block
 
     /**
      * Block constructor.
-     * @param BlockDataInterface $data
+     * @param BlockDataInterface|null $data
      * @param Block              $previousBlock
      */
-    public function __construct(BlockDataInterface $data, Block $previousBlock = null)
+    public function __construct(BlockDataInterface $data = null, Block $previousBlock = null)
     {
         $this->createdAt = new \DateTime();
-        $this->data      = $data->getData();
+        $this->data      = $data !== null ? $data->getData() : '';
 
         if ($previousBlock !== null) {
             $this->idx               = $previousBlock->getIdx() + 1;
@@ -250,5 +250,10 @@ class Block
             // This is for dev purposes, but, if you want, keep it this way, but will slowdown the result
             //'previousBlock' => $this->previousBlock !== null ? $this->previousBlock->toArray() : null
         ];
+    }
+
+    public function __toString() : string
+    {
+        return json_encode((object) $this->toArray());
     }
 }

@@ -39,19 +39,29 @@ class Blockchain
 
     /**
      * @var Collection|Block[]
-     * @ORM\OneToMany(targetEntity="App\Entity\Block", mappedBy="blockChain", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Block",
+     *                mappedBy="blockChain",
+     *                cascade={"persist"},
+     *                orphanRemoval=true)
      */
     protected $blocks;
 
     /**
      * Blockchain constructor.
-     * @param string $genesisBlockIdentifier
+     * @param Block $block
      * @throws \Exception
      */
-    public function __construct(string $genesisBlockIdentifier = 'Genesis')
+    public function __construct(Block $block = null)
     {
-        $this->blocks    = new ArrayCollection();
-        $this->blocks[]  = (new Block($genesisBlockIdentifier, null))->setBlockChain($this);
+        $this->blocks = new ArrayCollection();
+
+        if ($block !== null) {
+            $block->setBlockChain($this);
+            $this->blocks[] = $block;
+        } else {
+            $this->blocks[] = (new Block(null, null))->setBlockChain($this);
+        }
+
         $this->active    = true;
         $this->uuid      = Uuid::uuid4();
         $this->createdAt = new \DateTime();
@@ -127,6 +137,10 @@ class Blockchain
         return $this->blocks;
     }
 
+    public function getBlock(int $i) : ?Block {
+        return $this->blocks->get($i);
+    }
+
     public function addBlock(Block $block): self
     {
         if (!$this->blocks->contains($block)) {
@@ -161,6 +175,13 @@ class Blockchain
         }
 
         return null;
+    }
+
+    /**
+     * @return Block
+     */
+    public function genesisBlock() : Block {
+        return $this->blocks->first();
     }
 
     /**

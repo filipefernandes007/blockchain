@@ -18,4 +18,16 @@ class BlockchainRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Blockchain::class);
     }
+
+    /**
+     * @return Blockchain|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getLastEntity() : ?Blockchain {
+        return $this->createQueryBuilder('e')
+                    ->orderBy('e.id', 'DESC')
+                    ->setMaxResults(1)
+                    ->getQuery()
+                    ->getOneOrNullResult();
+    }
 }
